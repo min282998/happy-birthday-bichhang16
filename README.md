@@ -1,133 +1,176 @@
+[index.html](https://github.com/user-attachments/files/22002043/index.html)
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Birthday</title>
+  <title>Happy Birthday Bích Hằng</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background: radial-gradient(circle at center, #ffdde1, #ee9ca7);
-      overflow: hidden;
-      font-family: 'Arial', sans-serif;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #ffdde1, #ee9ca7, #ff6a88, #ff99ac);
+      background-size: 400% 400%;
+      animation: bgMove 15s ease infinite;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
     }
+
+    @keyframes bgMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
     .message {
       position: absolute;
-      top: 20%;
-      width: 100%;
-      text-align: center;
-      font-size: 2em;
+      font-size: 2.5em;
       font-weight: bold;
-      color: white;
+      text-align: center;
       opacity: 0;
-      text-shadow: 0 0 10px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de;
-      animation: fadeInOut 12s linear infinite;
+      animation: fadeInOut 16s linear infinite;
     }
+
     @keyframes fadeInOut {
-      0%, 20% { opacity: 0; }
-      25%, 45% { opacity: 1; }
-      50%, 100% { opacity: 0; }
+      0% {opacity: 0; transform: scale(0.8);}
+      5% {opacity: 1; transform: scale(1);}
+      20% {opacity: 1;}
+      25% {opacity: 0;}
+      100% {opacity: 0;}
     }
+
+    .msg1 { animation-delay: 0s; }
+    .msg2 { animation-delay: 4s; }
+    .msg3 { animation-delay: 8s; }
+    .msg4 { animation-delay: 12s; }
+
+    /* Hộp quà */
     .gift {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 6em;
-      opacity: 0;
-      animation: giftAppear 12s linear infinite;
+      bottom: 20%;
+      width: 100px;
+      height: 100px;
+      background: #ff477e;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: shake 2s infinite;
+      z-index: 2;
     }
-    @keyframes giftAppear {
-      0%, 70% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
-      75% { opacity: 1; transform: translate(-50%, -50%) scale(1.2) rotate(10deg); }
-      80% { transform: translate(-50%, -50%) scale(1) rotate(-10deg); }
-      85% { transform: translate(-50%, -50%) scale(1.3) rotate(0deg); }
-      90% { opacity: 0; }
-      100% { opacity: 0; }
-    }
-    .happy {
+
+    .gift:before {
+      content: "";
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 4.5em;
-      font-weight: bold;
-      color: #fff;
-      text-shadow: 0 0 20px #ff00de, 0 0 40px #00eaff, 0 0 60px #ff00de;
-      opacity: 0;
-      animation: happyAppear 12s linear infinite;
-    }
-    @keyframes happyAppear {
-      0%, 85% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-      90% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
-      95% { transform: translate(-50%, -50%) scale(1); }
-      100% { opacity: 0; }
-    }
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+      width: 20px;
       height: 100%;
-      z-index: -1;
+      background: #ffd700;
+    }
+    .gift:after {
+      content: "";
+      position: absolute;
+      height: 20px;
+      width: 100%;
+      background: #ffd700;
+    }
+
+    @keyframes shake {
+      0%, 100% {transform: rotate(0deg);}
+      25% {transform: rotate(3deg);}
+      75% {transform: rotate(-3deg);}
+    }
+
+    /* Happy Birthday text */
+    .big-text {
+      position: absolute;
+      font-size: 3.5em;
+      font-weight: bold;
+      text-align: center;
+      top: 35%;
+      opacity: 0;
+      background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80, #facc15, #f87171);
+      background-size: 1000% 1000%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: bigText 16s infinite, gradient 10s ease infinite;
+    }
+
+    @keyframes gradient {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    @keyframes bigText {
+      0%,60% {opacity: 0; transform: scale(0.5);}
+      65% {opacity: 1; transform: scale(1.1);}
+      70% {opacity: 1; transform: scale(1);}
+      90% {opacity: 1;}
+      100% {opacity: 0;}
+    }
+
+    /* LED rainbow tên người gửi */
+    .signature {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-weight: bold;
+      font-size: 1.2em;
+      background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 5s linear infinite;
+    }
+
+    @keyframes rainbow {
+      0% {background-position: 0%;}
+      100% {background-position: 400%;}
+    }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: red;
+      top: -10px;
+      animation: fall 4s linear forwards;
+    }
+
+    @keyframes fall {
+      0% {transform: translateY(0) rotate(0);}
+      100% {transform: translateY(100vh) rotate(720deg);}
     }
   </style>
 </head>
 <body>
-  <div class="message" style="animation-delay:0s">Happy Birthday Bích Hằng</div>
-  <div class="message" style="animation-delay:3s">Chúc mừng tuổi 16</div>
-  <div class="message" style="animation-delay:6s">Ngày càng xinh đẹp</div>
-  <div class="message" style="animation-delay:9s">Wishing You All The Best!</div>
+  <div class="message msg1">Happy Birthday Bích Hằng 🎂</div>
+  <div class="message msg2">Chúc mừng tuổi 16 ✨</div>
+  <div class="message msg3">Ngày càng xinh đẹp 🌸</div>
+  <div class="message msg4">Wish you all the best 💖</div>
 
-  <div class="gift">🎁</div>
-  <div class="happy">HAPPY BIRTHDAY 🎉</div>
-
-  <canvas id="sparkles"></canvas>
+  <div class="gift"></div>
+  <div class="big-text">🎉 Happy Birthday 🎉</div>
+  <div class="signature">From: Hải Thành (Minazure)</div>
 
   <script>
-    const canvas = document.getElementById('sparkles');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let sparkles = [];
-    function random(min, max) { return Math.random() * (max - min) + min; }
-    function createSparkle() {
-      return {
-        x: random(0, canvas.width),
-        y: random(0, canvas.height),
-        r: random(1, 3),
-        dx: random(-0.5, 0.5),
-        dy: random(-0.5, 0.5),
-        opacity: random(0.5, 1)
-      };
+    function createConfetti() {
+      for(let i=0; i<40; i++) {
+        let conf = document.createElement("div");
+        conf.classList.add("confetti");
+        document.body.appendChild(conf);
+        conf.style.left = Math.random() * window.innerWidth + "px";
+        conf.style.backgroundColor = ["#ff4d6d","#ffd93d","#6a4c93","#00bbf9","#00f5d4"][Math.floor(Math.random()*5)];
+        conf.style.animationDuration = (Math.random()*3+2) + "s";
+        setTimeout(()=>{conf.remove();},4000);
+      }
     }
-    for (let i = 0; i < 100; i++) sparkles.push(createSparkle());
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      sparkles.forEach(s => {
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255,255,255," + s.opacity + ")";
-        ctx.fill();
-        s.x += s.dx;
-        s.y += s.dy;
-        if (s.x < 0 || s.x > canvas.width || s.y < 0 || s.y > canvas.height) {
-          s.x = random(0, canvas.width);
-          s.y = random(0, canvas.height);
-        }
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
+
+    setInterval(createConfetti,16000); // mỗi lần hộp quà nổ
   </script>
 </body>
 </html>
